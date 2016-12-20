@@ -52,6 +52,10 @@
       <HintPath>..\..\packages\Xb.Core.1.0.6\lib\net45\Xb.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Xb.Db, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xb.Db.1.0.0\lib\net451\Xb.Db.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -82,10 +86,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Xb.Db\Xb.Db.STD1.3\Xb.Db.STD1.3.csproj">
-      <Project>{e934d179-93cc-4890-86f6-2827d2d5cd61}</Project>
-      <Name>Xb.Db.STD1.3</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Xb.Db.MsSql.STD1.3\Xb.Db.MsSql.STD1.3.csproj">
       <Project>{8c03b514-baa0-4b37-a5c9-9d2bee891aca}</Project>
       <Name>Xb.Db.MsSql.STD1.3</Name>
