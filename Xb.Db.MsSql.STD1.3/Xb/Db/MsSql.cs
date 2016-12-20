@@ -140,15 +140,25 @@ namespace Xb.Db
             sql.AppendFormat("     ,COL.column_id AS COLUMN_INDEX ");
             sql.AppendFormat("     ,COL.NAME AS COLUMN_NAME ");
             sql.AppendFormat("     ,TYP.NAME AS 'TYPE' ");
-            sql.AppendFormat("     ,CASE WHEN COL.PRECISION = 0 THEN COL.MAX_LENGTH ELSE NULL END AS CHAR_LENGTH ");
-            sql.AppendFormat("     ,CASE WHEN COL.PRECISION = 0 THEN NULL ELSE COL.PRECISION END AS NUM_PREC ");
+            sql.AppendFormat("     ,CASE WHEN COL.PRECISION = 0  ");
+            sql.AppendFormat("          THEN COL.MAX_LENGTH ");
+            sql.AppendFormat("          ELSE -1 ");
+            sql.AppendFormat("      END AS CHAR_LENGTH ");
+            sql.AppendFormat("     ,CASE WHEN COL.PRECISION = 0 ");
+            sql.AppendFormat("          THEN -1 ");
+            sql.AppendFormat("          ELSE COL.PRECISION ");
+            sql.AppendFormat("      END AS NUM_PREC ");
             sql.AppendFormat("     ,COL.SCALE AS NUM_SCALE ");
-            sql.AppendFormat("     ,CASE ");
-            sql.AppendFormat("          WHEN XCL.INDEX_COLUMN_ID IS NOT NULL AND IDX.IS_PRIMARY_KEY = 1 THEN 1 ");
+            sql.AppendFormat("     ,CASE WHEN XCL.INDEX_COLUMN_ID IS NOT NULL ");
+            sql.AppendFormat("                AND IDX.IS_PRIMARY_KEY = 1 ");
+            sql.AppendFormat("          THEN 1 ");
             sql.AppendFormat("          ELSE 0 ");
             sql.AppendFormat("      END AS IS_PRIMARY_KEY ");
-            sql.AppendFormat("     ,COL.IS_NULLABLE AS IS_NULLABLE ");
-            sql.AppendFormat("     ,CMT.value AS COMMENT ");
+            sql.AppendFormat("     ,CASE WHEN COL.IS_NULLABLE = 1 ");
+            sql.AppendFormat("          THEN 1 ");
+            sql.AppendFormat("          ELSE 0 ");
+            sql.AppendFormat("      END AS IS_NULLABLE ");
+            sql.AppendFormat("     ,ISNULL(CMT.value, '') AS COMMENT ");
             sql.AppendFormat(" FROM ");
             sql.AppendFormat("     SYS.COLUMNS AS COL ");
             sql.AppendFormat(" LEFT JOIN SYS.OBJECTS AS TBL");
@@ -171,7 +181,7 @@ namespace Xb.Db
             sql.AppendFormat(" ORDER BY ");
             sql.AppendFormat("      TBL.NAME ASC ");
             sql.AppendFormat("     ,COL.COLUMN_ID ASC ");
-            this.StructureTable = this.Query(sql.ToString());
+            this.StructureTable = this.Query<Xb.Db.DbBase.Structure>(sql.ToString());
         }
 
 
