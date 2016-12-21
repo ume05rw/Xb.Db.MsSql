@@ -18,7 +18,9 @@ Supports .NET4.5.1, .NET Standard1.3
 
 ## Usage
 1. [Add NuGet Package](https://www.nuget.org/packages/Xb.Db.MsSql/) to your project.
-2. Create Instance, and do any()
+2. Create instance `var db = new Xb.Db.MsSql("DatabaseName", "UserName", "Password", "HostName");`
+3. Get model `var model = db.Models["TableName"];`
+4. do any()
 
 Namespace and Methods are...
 
