@@ -28,7 +28,7 @@ Namespace and Methods are...
 
     ・Xb.Db
          |
-         +- .DbBase(Instance)
+         +- .MsSql(Instance)
          |    |
          |    +- .Constructor(string name,
          |    |               string user = "sa",
