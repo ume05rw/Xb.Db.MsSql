@@ -50,15 +50,13 @@ namespace Xb.Db
         /// コンストラクタ
         /// </summary>
         /// <param name="connection"></param>
-        /// <param name="name"></param>
         /// <param name="isBuildModels"></param>
         /// <param name="encoding"></param>
         public MsSql(SqlConnection connection
-                   , string name
                    , bool isBuildModels = true
                    , Encoding encoding = null)
             : base (connection
-                  , name
+                  , ""
                   , isBuildModels)
         {
             this.Init(encoding);
